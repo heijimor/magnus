@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+    ports:
+      - "5432:5432"
+
+  rocket:
+    build: .
+    command: bash -c "cargo run"
+    links:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://postgres:example/localhost:5432/postgres
+    ports:
+      - 8002:6666
