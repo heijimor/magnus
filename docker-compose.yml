@@ -16,6 +16,6 @@ services:
     links:
       - db
     environment:
-      - DATABASE_URL=postgresql://postgres:example/localhost:5432/postgres
+      - DATABASE_URL=postgresql://postgres:example/localhost:5432/magnus
     ports:
       - 8002:6666
